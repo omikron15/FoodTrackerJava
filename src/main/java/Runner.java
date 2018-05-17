@@ -53,9 +53,11 @@ public class Runner {
 
         List<Meal> allMeals = DBHelper.getAll(Meal.class);
 
-        List<Meal> allBreakfast = DBMeal.findAllMealTypes(Meal.class, MealType.BREAKFAST);
-        List<Meal> allLunch = DBMeal.findAllMealTypes(Meal.class, MealType.LUNCH);
-        List<Meal> allDinner = DBMeal.findAllMealTypes(Meal.class, MealType.DINNER);
+        List<Meal> allBreakfast = DBMeal.findAllMealTypes(MealType.BREAKFAST);
+        List<Meal> allLunch = DBMeal.findAllMealTypes(MealType.LUNCH);
+        List<Meal> allDinner = DBMeal.findAllMealTypes(MealType.DINNER);
+
+        List<Meal> allMealsOnDay = DBMeal.findAllonDay(new GregorianCalendar(2018, 0, 1));
 
     }
 }
