@@ -2,6 +2,7 @@ package models.foods;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Entity
@@ -12,14 +13,16 @@ public class Meal {
     private String name;
     private MealType type;
     private List<Food> foods;
+    private GregorianCalendar date;
 
     public Meal() {
     }
 
-    public Meal(String name, MealType type) {
+    public Meal(String name, MealType type, GregorianCalendar date) {
         this.name = name;
         this.type = type;
         this.foods = new ArrayList<Food>();
+        this.date = date;
     }
 
     @Id
@@ -62,6 +65,15 @@ public class Meal {
 
     public void setFoods(List<Food> foods) {
         this.foods = foods;
+    }
+
+    @Column(name = "date")
+    public GregorianCalendar getDate() {
+        return date;
+    }
+
+    public void setDate(GregorianCalendar date) {
+        this.date = date;
     }
 
     public void addFood(Food food){
