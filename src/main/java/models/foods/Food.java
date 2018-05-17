@@ -2,6 +2,8 @@ package models.foods;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,7 +14,7 @@ public abstract class Food {
     private int id;
     private String name;
     private int calories;
-    private ArrayList<Meal> meals;
+    private List<Meal> meals;
 
     public Food() {
     }
@@ -52,14 +54,15 @@ public abstract class Food {
         this.calories = calories;
     }
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "meal_food",
             inverseJoinColumns = {@JoinColumn(name = "meal_id", nullable = false, updatable = false)},
             joinColumns = {@JoinColumn(name = "food_id", nullable = false, updatable = false)})
-    public ArrayList<Meal> getMeals() {
+    public List<Meal> getMeals() {
         return meals;
     }
 
-    public void setMeals(ArrayList<Meal> meals) {
+    public void setMeals(List<Meal> meals) {
         this.meals = meals;
     }
 }

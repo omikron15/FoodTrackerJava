@@ -58,6 +58,19 @@ public class Runner {
         List<Meal> allDinner = DBMeal.findAllMealTypes(MealType.DINNER);
 
         List<Meal> allMealsOnDay = DBMeal.findAllonDay(new GregorianCalendar(2018, 0, 1));
+        int totalCals = calculateDailyCals(new GregorianCalendar(2018,0,1));
 
+
+    }
+
+    public static int calculateDailyCals(GregorianCalendar date){
+        int total = 0;
+        List<Meal> meals = DBMeal.findAllonDay(date);
+        for (Meal meal : meals){
+            for (Food food : DBMeal.getFoodForMeal(meal)){
+                total += food.getCalories();
+            }
+        }
+        return total;
     }
 }

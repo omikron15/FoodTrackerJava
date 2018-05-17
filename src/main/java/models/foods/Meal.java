@@ -79,4 +79,12 @@ public class Meal {
     public void addFood(Food food){
         this.foods.add(food);
     }
+
+    public int calculateCalCount(){
+        int total = 0;
+        for (Food food : this.foods){
+            total += food.getCalories();
+        }
+        return total;
+    }
 }
