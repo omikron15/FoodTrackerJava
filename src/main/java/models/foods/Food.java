@@ -1,6 +1,8 @@
 package models.foods;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -10,6 +12,7 @@ public abstract class Food {
     private int id;
     private String name;
     private int calories;
+    private ArrayList<Meal> meals;
 
     public Food() {
     }
@@ -17,6 +20,7 @@ public abstract class Food {
     public Food(String name, int calories) {
         this.name = name;
         this.calories = calories;
+        this.meals = new ArrayList<Meal>();
     }
 
     @Id
@@ -46,5 +50,16 @@ public abstract class Food {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    @JoinTable(name = "meal_food",
+            inverseJoinColumns = {@JoinColumn(name = "meal_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "food_id", nullable = false, updatable = false)})
+    public ArrayList<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(ArrayList<Meal> meals) {
+        this.meals = meals;
     }
 }
