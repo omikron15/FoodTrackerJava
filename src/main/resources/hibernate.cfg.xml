@@ -14,7 +14,7 @@
         <mapping class="models.foods.Food"/>
         <mapping class="models.foods.Meat"/>
         <mapping class="models.foods.Fruit"/>
-        <!--<mapping class="models.foods.Grain"/>-->
+        <mapping class="models.foods.Grain"/>
         <!--<mapping class="models.foods.Meal"/>-->
         <!--<mapping class="models.tracker.Tracker"/>-->
         <!--<mapping class="models.tracker.MealDay"/>-->
